@@ -9,6 +9,10 @@
     },
     "servers": [
         {
+            "url": "https://flightsapi.onrender.com",
+            "decription": "Remote server at render"
+        },
+        {
             "url": "http://localhost:8080",
             "decription:": "localhost"
         }
