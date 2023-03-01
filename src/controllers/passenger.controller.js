@@ -6,8 +6,8 @@ import {
 // Create and Save a new Passenger
 export const create = async (req, res) => {
   try {
-    const { name, age, email, assent } = req.body;
-    if (!name || !age || !email || !assent) {
+    const { name, age, email, assent, destination } = req.body;
+    if (!name || !age || !email || !assent || !destination) {
       return res.status(400).send({
         message: "Missing data",
       });
@@ -18,6 +18,7 @@ export const create = async (req, res) => {
       age,
       email,
       assent,
+      destination,
     });
 
     res.status(201).send({ message: "Passenger add successfully" });

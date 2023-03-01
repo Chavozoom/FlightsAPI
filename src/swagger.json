@@ -1,0 +1,119 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Passenger API Documentation",
+        "contact": {
+            "email": "isaquechaves10500@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "decription:": "localhost"
+        }
+    ],
+    "paths": {
+        "/passengers/": {
+            "post": {
+                "summary": "Add a new passenger",
+                "description": "Route responsible for add a new passenger",
+                "tags": [
+                    "Passenger"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Passenger"
+                            },
+                            "examples": {
+                                "Passenger": {
+                                    "value": {
+                                        "name": "Will Smith",
+                                        "email": "will@gmail.com",
+                                        "age": 54,
+                                        "assent": 12,
+                                        "destination": "Bahamas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Missing data"
+                    },
+                    "201": {
+                        "description": "Passenger add successfully",
+                        "content": {
+                            "application/json": {
+                                "schemma": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Passenger"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/passengers": {
+            "get": {
+                "summary": "Get all the Passengers",
+                "description": "Route responsible for get all passengers",
+                "tags": [
+                    "Passenger"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "No registred passenger"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schemma": {
+                                    "type": "array",
+                                    "$ref": "#/components/schemas/Passenger"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Passenger": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "String",
+                        "required": true
+                    },
+                    "age": {
+                        "type": "Number",
+                        "required": true
+                    },
+                    "email": {
+                        "type": "String",
+                        "required": true,
+                        "unique": true,
+                        "lowercase": true
+                    },
+                    "assent": {
+                        "type": "Number",
+                        "required": true
+                    },
+                    "destination": {
+                        "type": "String",
+                        "required": true
+                    }
+                }
+            }
+        }
+    }
+}

@@ -12,13 +12,18 @@ const PassengerSchema = new mongoose.Schema({
   email:{
     type: String,
     required: true,
+    unique: true,
+    lowercase: true,
   },
   assent:{
     type: Number,
     required: true,
   },
+  destination:{
+    type: String,
+    required: true,
+  },
 });
-
 const Passenger = mongoose.model("Passenger", PassengerSchema);
 
 export default Passenger;
